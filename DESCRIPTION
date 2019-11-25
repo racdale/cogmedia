@@ -13,5 +13,5 @@ Description:
     wish to have greater access to the data.
 Depends: R (>= 3.4), crayon, urltools
 License: GPL (>= 2)
-Collate: 'cogmedia_sources.R','cogmedia_data.R','yesterday.R','tomorrow.R','shift_date.R','length_in_words.R'
+Collate: 'cogmedia_sources.R' 'cogmedia_data.R' 'yesterday.R' 'tomorrow.R' 'shift_date.R' 'length_in_words.R'
 NeedsCompilation: no
