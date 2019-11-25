@@ -36,7 +36,7 @@ On occasion this version on GitHub will go out of alignment before we do a CRAN 
 
 install.packages('devtools')
 
-devtools::install_github('racdale/cogmedia')
+devtools::install_github('racdale/cogmedia-api')
 
 ```
 
