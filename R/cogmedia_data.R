@@ -22,28 +22,32 @@ cogmedia_data = function(source='all',dt1=yesterday(),dt2=tomorrow(),search='',
               '&n_stories=',urltools::url_encode(n_stories),
               '&sort_by=',urltools::url_encode(sort_by),sep='')
   stories = jsonlite::fromJSON(url)
-  stories$title = trimws(urltools::url_decode(stories$title))
-  stories$story_desc = urltools::url_decode(stories$story_desc)
-  stories$social_score = as.numeric(stories$social_score)
-  if (!peruse) {
+  if (!is.null(stories$error)) {
     return(stories)
   } else {
-    for (i in 1:nrow(stories)) {
-      cat(as.character(i)%+%'. '%+%bold(stories[i,]$title)%+%' ('%+%stories[i,]$long_name%+%', '%+%stories[i,]$story_date%+%')\n')
-    }
-    command = ''
-    while (command!='q') {
-      command = readline('goto X, describe X, or type q to quit perusing: ')
-      components = unlist(strsplit(command, ' '))
-      if (components[1]=='describe') {
-        i = as.numeric(components[2])
+    stories$title = trimws(urltools::url_decode(stories$title))
+    stories$story_desc = urltools::url_decode(stories$story_desc)
+    stories$social_score = as.numeric(stories$social_score)
+    if (!peruse) {
+      return(stories)
+    } else {
+      for (i in 1:nrow(stories)) {
         cat(as.character(i)%+%'. '%+%bold(stories[i,]$title)%+%' ('%+%stories[i,]$long_name%+%', '%+%stories[i,]$story_date%+%')\n')
-        cat(stories[i,]$story_desc%+%'\n\n')
-      } else if (components[1]=='goto') {
-        browseURL(stories[as.numeric(components[2]),]$url)
       }
-    }
-    return(stories)
+      command = ''
+      while (command!='q') {
+        command = readline('goto X, describe X, or type q to quit perusing: ')
+        components = unlist(strsplit(command, ' '))
+        if (components[1]=='describe') {
+          i = as.numeric(components[2])
+          cat(as.character(i)%+%'. '%+%bold(stories[i,]$title)%+%' ('%+%stories[i,]$long_name%+%', '%+%stories[i,]$story_date%+%')\n')
+          cat(stories[i,]$story_desc%+%'\n\n')
+        } else if (components[1]=='goto') {
+          browseURL(stories[as.numeric(components[2]),]$url)
+        }
+      }
+      return(stories)
+    }    
   }
 }
 
