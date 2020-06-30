@@ -11,7 +11,7 @@ With the API, you can summon data right inside R, in the following way. The API 
 source_counts = cogmedia_sources(api_key='XXX');
 
 stories = cogmedia_data(api_key='XXX',
-	dt1='2019-01-01', dt2='2019-02-01',
+	dt1='2019-06-10', dt2='2019-06-20',
 	source='New York Times', sort_by='social_score');
 
 ```
