@@ -1,4 +1,4 @@
-#' Main SINDy Code
+#' Main CogMedia Code
 #' 
 #' @param dt1 'YYYY-MM-DD' format for date 1 of interval
 #' @param dt2 'YYYY-MM-DD' format for date 2 of interval
