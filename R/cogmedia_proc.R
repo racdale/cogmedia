@@ -16,7 +16,7 @@ cogmedia_proc = function(stories,aggregate=TRUE) {
   sentiments_data = get_sentiments("nrc")
   
   if (aggregate) {
-    proc_stories = cogmedia_proc_tidy(stories,sentiments_data)
+    res = cogmedia_proc_tidy(stories,sentiments_data)
   } else {
     proc_stories = vector("list",nrow(stories))
     print(paste('Processing',nrow(stories),'stories separately (aggregate=FALSE), may take a minute...'))
