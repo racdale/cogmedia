@@ -8,11 +8,19 @@ With the API, you can summon data right inside R, in the following way. The API 
 
 ```R
 
-source_counts = cogmedia_sources(api_key='XXX');
+source_counts = cogmedia_sources(api_key='API_KEY')
 
-stories = cogmedia_data(api_key='XXX',
+stories = cogmedia_data(api_key='API_KEY',
 	dt1='2019-06-10', dt2='2019-06-20',
-	source='New York Times', sort_by='social_score');
+	source='New York Times', sort_by='social_score')
+
+```
+
+CogMedia's API contains some rudimentary applied NLP via tidytext and other resources. The function `cogmedia_proc` can be applied to output from `cogmedia_data` and it will return a list structure with various details.
+
+```R
+
+processed_info = cogmedia_proc(stories)
 
 ```
 
@@ -22,7 +30,7 @@ You can read the news in R! Using `crayon`, we format news stories in your conso
 
 ```R
 
-stories = cogmedia_data(api_key='XXX', n_stories=20, peruse=TRUE);
+stories = cogmedia_data(api_key='API_KEY', n_stories=20, peruse=TRUE)
 
 ```
 
